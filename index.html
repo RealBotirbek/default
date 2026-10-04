@@ -150,28 +150,19 @@
 
         </div>
 
-        <p class="views">
-            <i class="fa-solid fa-eye"></i>
-            <span id="view-count">...</span> views
-        </p>
-
         <p class="footer">
             © 2026 Botirbek Abduxalimov
         </p>
 
     </main>
-
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SLX65DCNBJ"></script>
     <script>
-        const pageUrl = encodeURIComponent(window.location.href);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
     
-        fetch(`https://librecounter.org/count?url=${pageUrl}&userAgent=${encodeURIComponent(navigator.userAgent)}`)
-            .then(response => response.text())
-            .then(() => {
-                document.getElementById("view-count").textContent = "Viewed";
-            })
-            .catch(() => {
-                document.getElementById("view-count").textContent = "—";
-            });
+      gtag('config', 'G-SLX65DCNBJ');
     </script>
 
 </body>
