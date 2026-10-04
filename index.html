@@ -160,11 +160,14 @@
         </p>
 
     </main>
+
     <script>
-        fetch("https://api.counterapi.dev/v1/yourname/portfolio/up")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("view-count").textContent = data.count;
+        const pageUrl = encodeURIComponent(window.location.href);
+    
+        fetch(`https://librecounter.org/count?url=${pageUrl}&userAgent=${encodeURIComponent(navigator.userAgent)}`)
+            .then(response => response.text())
+            .then(() => {
+                document.getElementById("view-count").textContent = "Viewed";
             })
             .catch(() => {
                 document.getElementById("view-count").textContent = "—";
