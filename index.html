@@ -102,6 +102,12 @@
             border-color: #172b4d;
         }
 
+        .views {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #98a2b3;
+        }
+
         .footer {
             margin-top: 35px;
             font-size: 13px;
@@ -144,11 +150,26 @@
 
         </div>
 
+        <p class="views">
+            <i class="fa-solid fa-eye"></i>
+            <span id="view-count">...</span> views
+        </p>
+
         <p class="footer">
             © 2026 Botirbek Abduxalimov
         </p>
 
     </main>
+    <script>
+        fetch("https://api.counterapi.dev/v1/yourname/portfolio/up")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("view-count").textContent = data.count;
+            })
+            .catch(() => {
+                document.getElementById("view-count").textContent = "—";
+            });
+    </script>
 
 </body>
 </html>
