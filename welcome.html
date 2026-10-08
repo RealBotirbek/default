@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <title>EdTrack — Learning Center Management System</title>
 <meta name="description" content="EdTrack is a learning center management system for courses, groups, schedules, attendance, assessments, mentoring and student rewards.">
 <link rel="icon" href="logo.png">
@@ -12,8 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ---------- Theme tokens ----------
-   Follows the visitor's system theme by default.
-   The header switch flips to the opposite theme (CSS only, no JavaScript). */
+   Light is the default. The header switch turns dark mode on (CSS only, no JavaScript). */
 :root{
   --blue:#0088ff;--blue-dark:#006fd1;--green:#50c878;
   --bg:#fff;--soft:#f7f8fa;--soft2:#fbfcfe;--soft-blue:#eef6ff;--card:#fff;
@@ -30,21 +29,6 @@
   --header:rgba(11,16,24,.9);--hero-from:#0e1a2b;--coins:#101c33;--hover-line:#2b5a94;
   --logo:invert(1);--knob:24px;color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){
-  :root{
-    --bg:#0b1018;--soft:#0f1520;--soft2:#0d131c;--soft-blue:#14263f;--card:#131a26;
-    --line:#222c3a;--line2:#33415a;--ink:#eef2f8;--muted:#9aa5b8;--lead:#aab4c6;--nav:#b4bfd0;
-    --header:rgba(11,16,24,.9);--hero-from:#0e1a2b;--coins:#101c33;--hover-line:#2b5a94;
-    --logo:invert(1);--knob:24px;color-scheme:dark;
-  }
-  :root:has(#theme:checked){
-    --bg:#fff;--soft:#f7f8fa;--soft2:#fbfcfe;--soft-blue:#eef6ff;--card:#fff;
-    --line:#e4e7ec;--line2:#d8dee8;--ink:#101828;--muted:#667085;--lead:#596579;--nav:#475467;
-    --header:rgba(255,255,255,.92);--hero-from:#f8fbff;--coins:#172b4d;--hover-line:#b9dcff;
-    --logo:none;--knob:0px;color-scheme:light;
-  }
-}
-
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:82px}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
@@ -160,6 +144,15 @@ p{margin:0}
 .cta p{max-width:600px;margin:20px auto 0;color:#e7f3ff;font-size:1.1rem}
 .cta .actions{justify-content:center;margin-top:32px}
 
+/* ---------- Contacts ---------- */
+.contacts{padding:100px var(--gutter);background:var(--soft)}
+.contact-list{display:flex;flex-wrap:wrap;gap:16px}
+.contact-list a{display:flex;align-items:center;gap:14px;padding:14px 24px 14px 14px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);text-decoration:none;transition:border-color .2s,transform .2s}
+.contact-list a:hover{border-color:var(--blue);transform:translateY(-3px)}
+.contact-list img{width:48px;height:48px;padding:9px;border-radius:12px;background:#fff;border:1px solid var(--line);object-fit:contain}
+.contact-list strong{display:block;font:700 1.1rem var(--display)}
+.contact-list span{color:var(--muted);font-size:.9rem}
+
 /* ---------- Footer ---------- */
 footer{display:flex;align-items:center;flex-wrap:wrap;gap:18px 35px;padding:30px var(--gutter)}
 footer .brand{font-size:1.1rem}
@@ -196,7 +189,7 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .btn,.role,.theme-toggle .knob,.socials a{transition:none}
+  .btn,.role,.theme-toggle .knob,.socials a,.contact-list a{transition:none}
 }
 </style>
 </head>
@@ -215,6 +208,7 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
     <a href="#features">Features</a>
     <a href="#coins">Rewards</a>
     <a href="#flow">How it works</a>
+    <a href="#contacts">Contacts</a>
   </nav>
   <div class="top-actions">
     <label class="theme-toggle" for="theme">
@@ -336,6 +330,30 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
   </div>
 </section>
 
+<section class="contacts" id="contacts">
+  <div class="section-heading">
+    <h2>Contacts</h2>
+    <p>Questions about EdTrack or want to work together? Reach out on any of these.</p>
+  </div>
+  <div class="contact-list">
+    <!-- Telegram -->
+    <a href="https://t.me/edtrack" target="_blank" rel="noopener noreferrer">
+      <img src="telegram.png" alt="">
+      <div><strong>Telegram</strong><span>@edtrack</span></div>
+    </a>
+    <!-- GitHub -->
+    <a href="https://github.com/RealBotirbek" target="_blank" rel="noopener noreferrer">
+      <img src="github.png" alt="">
+      <div><strong>GitHub</strong><span>RealBotirbek</span></div>
+    </a>
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/realbotirbek/" target="_blank" rel="noopener noreferrer">
+      <img src="linkedin.png" alt="">
+      <div><strong>LinkedIn</strong><span>realbotirbek</span></div>
+    </a>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -350,10 +368,9 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
     <a href="/news/">News</a>
   </nav>
   <div class="socials">
-    <!-- Replace the three placeholder links below with your own -->
-    <a href="https://www.linkedin.com/in/YOUR-PROFILE" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="https://t.me/YOUR_USERNAME" target="_blank" rel="noopener noreferrer">Telegram</a>
-    <a href="https://github.com/YOUR-USERNAME" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/realbotirbek/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://t.me/edtrack" target="_blank" rel="noopener noreferrer">Telegram</a>
+    <a href="https://github.com/RealBotirbek" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
 </footer>
 
