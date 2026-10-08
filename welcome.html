@@ -27,7 +27,7 @@
   --bg:#0b1018;--soft:#0f1520;--soft2:#0d131c;--soft-blue:#14263f;--card:#131a26;
   --line:#222c3a;--line2:#33415a;--ink:#eef2f8;--muted:#9aa5b8;--lead:#aab4c6;--nav:#b4bfd0;
   --header:rgba(11,16,24,.9);--hero-from:#0e1a2b;--coins:#101c33;--hover-line:#2b5a94;
-  --logo:invert(1);--knob:24px;color-scheme:dark;
+  --logo:invert(1);--knob:26px;color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:82px}
@@ -47,16 +47,20 @@ p{margin:0}
 .brand img{width:36px;height:36px;object-fit:contain;filter:var(--logo)}
 .top nav{display:flex;align-items:center;gap:27px;margin-left:auto}
 .top nav a{color:var(--nav);font-size:.95rem;font-weight:500;text-decoration:none;transition:color .2s}
-.top nav a:hover,.sign-in:hover,footer nav a:hover{color:var(--blue)}
+.top nav a:hover{color:var(--blue)}
 .top-actions{display:flex;align-items:center;gap:16px}
-.sign-in{text-decoration:none;font-weight:600}
 
-/* Theme switch */
+/* Theme switch: sun sits on the left slot, moon on the right slot; the blue knob slides under the active one */
 .theme-input{position:absolute;opacity:0;pointer-events:none}
-.theme-toggle{position:relative;display:flex;align-items:center;justify-content:space-between;width:56px;height:32px;padding:0 8px;border:1px solid var(--line2);border-radius:20px;background:var(--card);cursor:pointer;font-size:.85rem;line-height:1;color:var(--muted)}
-.theme-toggle .knob{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:var(--blue);transform:translateX(var(--knob));transition:transform .2s}
-.theme-toggle span{position:relative;z-index:1}
-.theme-input:focus-visible+.top .theme-toggle,.theme-input:focus-visible~.top .theme-toggle{outline:3px solid var(--blue);outline-offset:3px}
+.theme-toggle{position:relative;flex:none;width:60px;height:34px;border:1px solid var(--line2);border-radius:20px;background:var(--card);cursor:pointer}
+.theme-toggle .knob{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:var(--blue);transform:translateX(var(--knob));transition:transform .2s}
+.theme-toggle .ico{position:absolute;top:3px;width:26px;height:26px;display:grid;place-items:center;color:var(--muted)}
+.theme-toggle .sun{left:3px;color:#fff}
+.theme-toggle .moon{left:29px}
+:root:has(#theme:checked) .theme-toggle .sun{color:var(--muted)}
+:root:has(#theme:checked) .theme-toggle .moon{color:#fff}
+.theme-toggle svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.theme-input:focus-visible+.top .theme-toggle{outline:3px solid var(--blue);outline-offset:3px}
 
 /* ---------- Buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 22px;border:2px solid transparent;border-radius:11px;font:700 .98rem var(--body);text-decoration:none;transition:transform .18s,background .18s,border-color .18s,color .18s}
@@ -179,7 +183,6 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
 }
 @media (max-width:700px){
   .top{min-height:70px;gap:14px}
-  .top-actions .sign-in{display:none}
   .btn{padding:11px 18px}
   .hero h1{font-size:clamp(2.7rem,12vw,4rem)}
   .hero-visual{padding:25px;min-height:300px}
@@ -213,10 +216,10 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
   <div class="top-actions">
     <label class="theme-toggle" for="theme">
       <span class="sr">Switch between light and dark mode</span>
-      <i class="knob"></i><span aria-hidden="true">☀  </span><span aria-hidden="true">☾</span>
+      <i class="knob"></i>
+      <span class="ico sun" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+      <span class="ico moon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
     </label>
-    <a class="sign-in" href="/login/">Sign in</a>
-    <a class="btn btn-solid" href="/register_student/">Get started</a>
   </div>
 </header>
 
@@ -228,8 +231,8 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
     <h1>Run your learning center <span>smarter.</span></h1>
     <p class="lead">EdTrack brings courses, groups, schedules, attendance, assessments, mentor support and student rewards into one simple platform.</p>
     <div class="actions">
-      <a class="btn btn-solid" href="/register_student/">Create student account</a>
-      <a class="btn btn-outline" href="#features">Explore EdTrack</a>
+      <a class="btn btn-solid" href="#features">Explore EdTrack</a>
+      <a class="btn btn-outline" href="#contacts">Contact us</a>
     </div>
     <div class="hero-note"><span>●</span> One platform for your entire education center</div>
   </div>
@@ -324,6 +327,10 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
   <img class="cta-logo" src="logo-white.png" alt="EdTrack">
   <h2>Make learning easier to manage.</h2>
   <p>Bring your courses, groups, schedules, attendance, mentoring and student rewards together with EdTrack.</p>
+  <div class="actions">
+    <a class="btn btn-white" href="#contacts">Contact us</a>
+    <a class="btn btn-ghost" href="#features">Explore features</a>
+  </div>
 </section>
 
 <section class="contacts" id="contacts">
@@ -358,11 +365,6 @@ footer nav a{color:var(--nav);font-size:.9rem;font-weight:500;text-decoration:no
     <span>EdTrack</span>
   </a>
   <p>A learning management platform for education centers.</p>
-  <nav aria-label="Footer navigation">
-    <a href="/login/">Sign in</a>
-    <a href="/register_student/">Register</a>
-    <a href="/news/">News</a>
-  </nav>
   <div class="socials">
     <a href="https://www.linkedin.com/in/realbotirbek/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     <a href="https://t.me/edtrack" target="_blank" rel="noopener noreferrer">Telegram</a>
